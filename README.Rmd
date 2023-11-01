@@ -1,0 +1,152 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+options(tidyverse.quiet = TRUE)
+
+print_reports <- F
+build_package <- F
+package_exists <- T
+build_package_w_readme <- F
+
+print_reports_action <- ifelse(print_reports, "asis", "hide")
+```
+
+# toypackage
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of toypackage is to ...
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub.
+
+
+# Part 2. Packaging and documentation  🚧 ✅ 
+
+
+
+## minimal requirements for github package.  Have you:
+
+### Created files for package archetecture with `devtools::create("./ggbarlabs")` ✅ 
+
+### Moved functions R folder? ✅  
+
+```{r}
+knitr::knit_code$get() |> names()
+```
+
+
+```{r, eval = F}
+readme2pkg::chunk_to_r()
+```
+
+
+
+### Added roxygen skeleton? ✅ 
+
+ for auto documentation and making sure proposed functions are *exported*
+
+### Managed dependencies ? ✅ 
+
+package dependencies managed, i.e. `depend::function()` in proposed functions and declared in the DESCRIPTION
+
+### Chosen a license? ✅ 
+
+
+```{r, eval = F}
+usethis::use_package("ggplot2")
+usethis::use_mit_license()
+```
+
+### Run `devtools::check()` and addressed errors? ✅ 
+
+
+## Listen 🚧 
+
+### Consulted with technical experts 🚧 
+### Consulted with potential users 🚧 
+
+Getting started with that!
+
+## Polish.  Have you.
+
+### Settled on examples and put them in the roxygen skeleton? 🚧 
+
+### Written formal tests of functions? 🚧 
+
+
+### Sent tests in this readme to package via readme2pkg 🚧 
+
+That would look like this...
+
+```
+chunk_to_tests_testthat("test_geom_barlab_count")
+```
+
+
+### Have you worked added a description and author information in the DESCRIPTION file? 🚧 
+
+### Addressed *all* notes, warnings and errors. 🚧 
+
+## Promote
+
+### Package website built? 🚧 
+
+### Package website deployed? 🚧 
+
+## Harden
+
+### Submit to CRAN?  🚧 
+
+
+# Reports, Environment
+
+## Description file extract
+
+```{r}
+
+```
+
+## Environment
+
+Here I just want to print the packages and the versions
+
+```{r}
+all <- sessionInfo() |> print() |> capture.output()
+all[11:17]
+
+
+```
+
+## `devtools::check()` report
+
+```{r, error = T}
+# rm(list = c("geom_barlab_count", "geom_barlab_count_percent"))
+devtools::check(pkg = ".")
+```
+
+
+
